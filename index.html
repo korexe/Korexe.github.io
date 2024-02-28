@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Giveaway Timer</title>
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
@@ -46,10 +45,39 @@
     <a href="./ABOUT.html">
       <button onclick="">CLICK HERE TO PARTICIPATE</button></a
     >
-    <script src="timer.js"></script>
-  </body>
-</html>
-body {
+    <script> 
+var endTime = new Date();
+endTime.setDate(endTime.getDate() + 10); // Set end time 10 days from now
+
+function updateTimer() {
+  var now = new Date();
+  var timeDiff = endTime - now;
+
+  if (timeDiff <= 0) {
+    document.getElementById("days").textContent = "0";
+    document.getElementById("hours").textContent = "0";
+    document.getElementById("minutes").textContent = "0";
+    document.getElementById("seconds").textContent = "0";
+    return;
+  }
+
+  var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
+
+  var endDateString = endTime.toLocaleDateString();
+  document.getElementById("DATE").textContent =
+    "OFFER EXPIRES BY: " + endDateString;
+}
+
+setInterval(updateTimer, 1000); </script>
+    <style> body {
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -113,46 +141,6 @@ h1 {
 
 .bb {
   background-color: rgb(255, 194, 204);
-}
-var endTime = new Date();
-endTime.setDate(endTime.getDate() + 10); // Set end time 10 days from now
-
-function updateTimer() {
-  var now = new Date();
-  var timeDiff = endTime - now;
-
-  if (timeDiff <= 0) {
-    document.getElementById("days").textContent = "0";
-    document.getElementById("hours").textContent = "0";
-    document.getElementById("minutes").textContent = "0";
-    document.getElementById("seconds").textContent = "0";
-    return;
-  }
-
-  var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-
-  document.getElementById("days").textContent = days;
-  document.getElementById("hours").textContent = hours;
-  document.getElementById("minutes").textContent = minutes;
-  document.getElementById("seconds").textContent = seconds;
-
-  var endDateString = endTime.toLocaleDateString();
-  document.getElementById("DATE").textContent =
-    "OFFER EXPIRES BY: " + endDateString;
-}
-
-setInterval(updateTimer, 1000);
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ABOUT US</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body class="bb">
-    <img src="./iPhone-15-General-Feature-Black.jpg" alt="giveaway" />
+} </style>
   </body>
 </html>
