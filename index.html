@@ -1,34 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Countdown Timer</title>
-        <link rel="stylesheet" href="style.css" />
-        <script src="script.js" defer></script>
-    </head>
-    <body>
-        
-        <div class="container"></div>
-            <h1>New Years Countdown</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giveaway Timer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <img src="./iPhone-15-General-Feature-Black.jpg" />
+      </section>
 
-            <div class="countdown-container">
-                <div class="countdown-el days-c">
-                    <p class="big-text" id="days">0</p>
-                    <span>days</span>
-                </div>
-                <div class="countdown-el hours-c">
-                    <p class="big-text" id="hours">0</p>
-                    <span>hours</span>
-                </div>
-                <div class="countdown-el mins-c">
-                    <p class="big-text" id="mins">0</p>
-                    <span>mins</span>
-                </div>
-                <div class="countdown-el seconds-c">
-                    <p class="big-text" id="seconds">0</p>
-                    <span>seconds</span>
-                </div>
-            </div>
-    </body>
+      <section id="be">
+        <br /><br /><br />
+        <h1>IPHONE GIVEAWAY</h1>
+        <div id="DATE">OFFER ENDS IN:</div>
+        <br />
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias,
+        deleniti adipisci expedita ipsam, optio mollitia tempora, rem eos vero
+        velit iste nam est saepe sapiente pariatur sunt placeat repellat
+        corporis?
+        <br /><br /><br /><br /><br /><br /><br /><br />
+        <div id="ti">
+          <div class="timer-container">
+            <div class="timer-label">DAYS:</div>
+            <div class="timer-box" id="days"></div>
+          </div>
+          <div class="timer-container">
+            <div class="timer-label">HOURS:</div>
+            <div class="timer-box" id="hours"></div>
+          </div>
+          <div class="timer-container">
+            <div class="timer-label">MINUTES:</div>
+            <div class="timer-box" id="minutes"></div>
+          </div>
+          <div class="timer-container">
+            <div class="timer-label">SECONDS:</div>
+            <div class="timer-box" id="seconds"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <a href="./ABOUT.html">
+      <button onclick="">CLICK HERE TO PARTICIPATE</button></a
+    >
+    <script src="timer.js"></script>
+  </body>
+</html>
+body {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: grey;
+  overflow: hidden;
+}
+
+.timer-container {
+  text-align: center;
+  justify-content: center;
+  margin: 0 10px;
+  color: rgba(16, 2, 96, 0.806);
+  align-items: center;
+}
+#be {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.timer-label {
+  font-weight: bold;
+}
+
+.timer-box {
+  padding: 5px 10px;
+  border: 2px solid rgba(16, 2, 96, 0.806);
+  border-radius: 20px;
+}
+img {
+  height: 500px;
+  border-radius: 30px;
+  width: 600px;
+  margin: 30px;
+}
+.container {
+  display: flex;
+  text-align: center;
+  gap: 40px;
+}
+#ti {
+  display: flex;
+  justify-content: center;
+}
+#DATE {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: rgba(16, 2, 96, 0.806);
+  font-size: 20px;
+}
+
+button {
+  border-radius: 5px;
+  background-color: rgb(12, 12, 86);
+  color: aliceblue;
+}
+
+h1 {
+  color: rgb(11, 11, 85);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bb {
+  background-color: rgb(255, 194, 204);
+}
+var endTime = new Date();
+endTime.setDate(endTime.getDate() + 10); // Set end time 10 days from now
+
+function updateTimer() {
+  var now = new Date();
+  var timeDiff = endTime - now;
+
+  if (timeDiff <= 0) {
+    document.getElementById("days").textContent = "0";
+    document.getElementById("hours").textContent = "0";
+    document.getElementById("minutes").textContent = "0";
+    document.getElementById("seconds").textContent = "0";
+    return;
+  }
+
+  var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
+
+  var endDateString = endTime.toLocaleDateString();
+  document.getElementById("DATE").textContent =
+    "OFFER EXPIRES BY: " + endDateString;
+}
+
+setInterval(updateTimer, 1000);
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABOUT US</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bb">
+    <img src="./iPhone-15-General-Feature-Black.jpg" alt="giveaway" />
+  </body>
 </html>
